@@ -6,38 +6,48 @@ Grupo:
 
 SGBD: MySQL
 spring.datasource.url=jdbc:mysql://localhost:3306/turismo
+
 spring.datasource.username=root
+
 spring.datasource.password=ROOT
+
 
 # Funcionalidades AA-3
 
 REST API -- CRUD 1
  de clientes
 Cria um novo cliente [Create - CRUD] Feito
+
 POST http://localhost:8080/clientes
 
 Retorna a lista de clientes [Read - CRUD] Feito
+
 GET http://localhost:8080/clientes
 
 Retorna o cliente de id = {id} [Read - CRUD] Feito
+
 GET http://localhost:8080/clientes/{id}
 
 Atualiza o cliente de id = {id} [Update - CRUD] Feito
+
 PUT http://localhost:8080/clientes/{id}
 
 Remove o cliente de id = {id} [Delete - CRUD] Feito
+
 DELETE http://localhost:8080/clientes/{id}
 
 
 REST API -- CRUD de agências de turismo
 
 Cria uma nova agência de turismo [Create - CRUD] Feito
+
 POST http://localhost:8080/agencias
 Exemplo: de JSON
 
 Retorna a lista de agências de turismo [Read - CRUD] Feito
-GET http://localhost:8080/agencias
 
+GET http://localhost:8080/agencias
+```javascript
 [
     {
         "id": 2,
@@ -66,21 +76,28 @@ GET http://localhost:8080/agencias
         "descricao": null
     }
 ]
+```
 
 Retorna a agência de turismo de id = {id} [Read - CRUD] Feito
+
 GET http://localhost:8080/agencias/{id}
 
 Atualiza a agência de turismo de id = {id} [Update - CRUD] Feito
+
 PUT http://localhost:8080/agencias/{id}
 
 
 Remove a agência de turismo de id = {id} [Delete - CRUD] Feito
+
 DELETE http://localhost:8080/agencias/{id}
 
 
 CRUD: Create, Read, Update & Delete. ↩
+
 REST API -- Retorna a lista de pacotes turísticos [Read - CRUD] Feito
+
 GET http://localhost:8080/pacotes
+```javascript
 [
     {
         "id": 1,
@@ -103,17 +120,21 @@ GET http://localhost:8080/pacotes
         "valor": 12
     }
 ]
-
+```
 REST API -- Retorna a lista de pacotes turísticos do cliente de id = {id} [Read - CRUD] Feito
+
 GET http://localhost:8080/pacotes/clientes/{id}
 
 REST API -- Cria um novo pacote turístico na agência de id = {id} [Create - CRUD] Feito
+
 POST http://localhost:8080/pacotes/agencias/{id}
 
 REST API -- Retorna a lista de pacotes turísticos da agência de id = {id} [Read - CRUD] Feito
+
 GET http://localhost:8080/pacotes/agencias/{id}
 
 REST API -- Retorna a lista de pacotes turístivos cujo destino = {nome} [Read - CRUD] Feito
+
 GET http://localhost:8080/pacotes/destinos/{nome}
 
 # Funcionalidades AA-2
