@@ -77,6 +77,8 @@ GET http://localhost:8080/agencias
     }
 ]
 ```
+ps: Eu sei, parece que ele retornou um admin junto. Mas é uma agencia mesmo, eu estava testando.
+
 
 Retorna a agência de turismo de id = {id} [Read - CRUD] Feito
 
