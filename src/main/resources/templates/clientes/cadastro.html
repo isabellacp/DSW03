@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+
+<section class="layout-content" layout:fragment="corpo">
+
+
+    <div class="container" id="cadastro">
+
+        <div th:replace="fragments/alert"></div>
+
+        <form
+                th:action="${cliente.id == null} ? @{/clientes/salvar} : @{/clientes/editar}"
+                th:object="${cliente}" method="POST">
+
+            <div class="form-row">
+
+
+
+                <div class="form-group col-md-6">
+                    <label th:text="#{login.username}" for="usuario"></label>
+                    <select id="usuario" class="form-control" th:field="*{usuario}"  required="required">
+                        <option th:each="usuario : ${usuarios}" th:value="${usuario.id}"
+                                th:text="${usuario.nome}"></option>
+                    </select>
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{usuario}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{client.cpf}" for="cpf"></label>
+                    <input type="text" class="form-control" id="cpf" placeholder="123123"  required="required"
+                           autofocus="autofocus" th:field="*{cpf}"
+                           th:classappend="${#fields.hasErrors('cpf')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{cpf}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{client.birth}" for="nascimento"></label>
+                    <input type="datetime-local" class="form-control" id="nascimento" placeholder="123123"  required="required"
+                           autofocus="autofocus" th:field="*{nascimento}"
+                           th:classappend="${#fields.hasErrors('nascimento')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{nascimento}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{client.gender}" for="sexo"></label>
+                    <input type="text" class="form-control" id="sexo" placeholder="123123"  required="required"
+                           autofocus="autofocus" th:field="*{sexo}"
+                           th:classappend="${#fields.hasErrors('sexo')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{sexo}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{client.phone}" for="telefone"></label>
+                    <input type="text" class="form-control" id="telefone" placeholder="123123"  required="required"
+                           autofocus="autofocus" th:field="*{telefone}"
+                           th:classappend="${#fields.hasErrors('telefone')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{telefone}"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <input type="hidden" id="id" th:field="*{id}" />
+            <button type="submit" th:text="#{button.salvar.label}"
+                    class="btn btn-primary btn-sm"></button>
+        </form>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+    layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+<section class="layout-content" layout:fragment="corpo">
+
+    <div class="container" id="listagem">
+
+        <div th:replace="fragments/alert"></div>
+
+        <div align="center">
+            <table class="table">
+                <caption></caption>
+                <tr>
+                    <th>#</th>
+                    <th th:text="#{agency.cnpj}"></th>
+                    <th th:text="#{agency.name}"></th>
+                    <th th:text="#{agency.description}"></th>
+                    <th th:text="#{action.title}"></th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="agencia : ${agencias}">
+                    <td th:text="${agencia.id}"></td>
+                    <td th:text="${agencia.cnpj}"></td>
+                    <td th:text="${agencia.nome}"></td>
+                    <td th:text="${agencia.descricao}"></td>
+
+                    <td colspan="2">
+                        <a th:href="@{/agencias/editar/{id} (id=${agencia.id}) }"
+                           role="button">
+                            <span th:text="#{agency.edit_title}"> </span>
+                        </a>
+                        <a
+                                th:href="@{/agencias/excluir/{id} (id=${agencia.id}) }"
+                            <span th:text="#{link.excluir.label}" ></span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="fragments/modal :: modal"></div>
+</section>
+</body>
+</html>

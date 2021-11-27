@@ -1,0 +1,15 @@
+<div class="container" th:if="${sucess} != null">
+	<div class="notification is-primary"
+		role="alert">
+		<i></i> <span> <strong th:text="#{${sucess}}"></strong>
+		</span>
+	</div>
+</div>
+
+<div class="container" th:if="${fail} != null">
+	<div class="notification is-danger"
+		role="alert">
+		<i class="oi oi-check"></i> <span> <strong th:text="#{${fail}}"></strong>
+		</span>
+	</div>
+</div>

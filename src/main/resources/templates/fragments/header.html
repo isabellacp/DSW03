@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+<html xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header th:fragment="cabecalho">
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+				<a class="navbar-item"  th:text="#{menu.title}">
+				</a>
+
+				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+
+			<div id="navbarBasicExample" class="navbar-menu">
+				<div class="navbar-start">
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class="navbar-link" th:text="#{menu.list_packages}">
+						</a>
+
+						<div class="navbar-dropdown">
+							<a class="navbar-item" th:text="#{menu.list_all_packages}" th:href="@{/pacotes/listar}">
+							</a>
+						</div>
+					</div>
+
+					<p style="display: inherit;" sec:authorize="hasRole('ROLE_Agencia')">
+						<a class="navbar-item" th:text="#{menu.create_package}"  th:href="@{/pacotes/cadastro}"></a>
+					</p>
+					<p style="display: inherit;" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a class="navbar-item"  th:text="#{menu.list_agencies}" th:href="@{/agencias/listar}">
+						</a>
+						<a class="navbar-item"  th:text="#{menu.create_agency}" th:href="@{/agencias/cadastrar}">
+
+						</a>
+						<a class="navbar-item" th:text="#{menu.list_clients}" th:href="@{/clientes/listar}">
+						</a>
+						<a class="navbar-item"  th:text="#{menu.create_client}" th:href="@{/clientes/cadastrar}">
+						</a>
+					</p>
+					<p style="display: inherit;" sec:authorize="hasRole('ROLE_CLIENTE')">
+						<a class="navbar-item"  th:text="#{menu.list_bought}" th:href="@{/compras/listar/cliente}">
+						</a>
+					</p>
+				</div>
+
+				<div class="navbar-end">
+					<div class="navbar-item">
+						<div class="buttons">
+							<div sec:authorize="isAuthenticated()">
+								<form th:action="@{/logout}" method="post">
+											<input type="submit" name="login-submit" id="login-submit"
+												   class="button is-danger"  th:value="#{menu.logout}">
+								</form>
+							</div>
+							<div sec:authorize="!isAuthenticated()">
+								<a class="button is-primary"  th:text="#{menu.login}"  th:href="@{/login}">
+
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+
+	</header>
+</body>
+</html>

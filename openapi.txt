@@ -1,0 +1,208 @@
+openapi: "3.0.3"
+info:
+  title: "trabalho API"
+  description: "trabalho API"
+  version: "1.0.0"
+servers:
+  - url: "localhost:8080"
+paths:
+  /agencias:
+    get:
+      summary: "GET agencias"
+      operationId: "lista"
+      responses:
+        "200":
+          description: "OK"
+    post:
+      summary: "POST agencias"
+      operationId: "cria"
+      responses:
+        "200":
+          description: "OK"
+  /agencias/{id}:
+    get:
+      summary: "GET agencias/{id}"
+      operationId: "lista"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    put:
+      summary: "PUT agencias/{id}"
+      operationId: "atualiza"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE agencias/{id}"
+      operationId: "remove"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /clientes/{id}:
+    get:
+      summary: "GET clientes/{id}"
+      operationId: "lista"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    put:
+      summary: "PUT clientes/{id}"
+      operationId: "atualiza"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE clientes/{id}"
+      operationId: "remove"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /pacotes:
+    get:
+      summary: "GET pacotes"
+      operationId: "lista"
+      responses:
+        "200":
+          description: "OK"
+    post:
+      summary: "POST pacotes"
+      operationId: "cria"
+      responses:
+        "200":
+          description: "OK"
+  /pacotes/agencias/{id}:
+    get:
+      summary: "GET pacotes/agencias/{id}"
+      operationId: "lista_da_agencia"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    post:
+      summary: "POST pacotes/agencias/{id}"
+      operationId: "cria_na_agencia"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /pacotes/cliente/{id}:
+    get:
+      summary: "GET pacotes/cliente/{id}"
+      operationId: "lista_de_compras"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+  /pacotes/{destino}:
+    get:
+      summary: "GET pacotes/{destino}"
+      operationId: "lista_com_destino"
+      parameters:
+        - name: "destino"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+  /pacotes/{id}:
+    get:
+      summary: "GET pacotes/{id}"
+      operationId: "lista"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    put:
+      summary: "PUT pacotes/{id}"
+      operationId: "atualiza"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+    delete:
+      summary: "DELETE pacotes/{id}"
+      operationId: "remove"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"

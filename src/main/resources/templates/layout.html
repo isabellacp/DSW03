@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+    <title th:text="#{title.label}"></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" th:href="@{/image/favicon.png}" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+</head>
+<body>
+
+<header th:replace="fragments/header :: cabecalho">
+    <div>header</div>
+</header>
+
+<div class="layout-main">
+    <section layout:fragment="corpo">
+        <div>conteúdo principal das páginas</div>
+    </section>
+</div>
+
+<footer th:replace="fragments/footer :: rodape">
+    <div>footer</div>
+</footer>
+
+</body>
+</html>

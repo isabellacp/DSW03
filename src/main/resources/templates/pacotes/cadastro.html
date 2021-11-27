@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+
+<section class="layout-content" layout:fragment="corpo">
+
+
+
+    <div class="container" id="cadastro">
+
+        <div th:replace="fragments/alert"></div>
+
+        <form
+                th:action="${pacote.id} == null ? @{/pacotes/salvar} : @{/pacotes/editar}"
+                th:object="${pacote}" method="POST">
+
+            <div class="form-row">
+
+
+
+                <div class="form-group col-md-6">
+                    <label th:text="#{agency.name}" for="agencia"></label>
+                    <select id="agencia" class="form-control" th:field="*{agencia}"  required="required">
+                        <option th:each="agencia : ${agencias}" th:value="${agencia.id}"
+                                th:text="${agencia.nome}"></option>
+                    </select>
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{agencia}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{package.destination}" for="destino"></label>
+                    <input type="text" class="form-control" id="destino" placeholder="Paris"  required="required"
+                           autofocus="autofocus" th:field="*{destino}"
+                           th:classappend="${#fields.hasErrors('destino')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{destino}"></span>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label th:text="#{package.price}" for="valor"></label>
+                    <input type="text" class="form-control" id="valor" placeholder="10"  required="required"
+                           data-mask="000000,00" data-mask-reverse="true" th:field="*{valor}"
+                           th:classappend="${#fields.hasErrors('valor')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{valor}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{package.duration}" for="duracao"></label>
+                    <input type="text" class="form-control" id="duracao" placeholder="10"  required="required"
+                           autofocus="autofocus" th:field="*{duracao}"
+                           th:classappend="${#fields.hasErrors('duracao')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{duracao}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{package.departure}" for="partida"></label>
+                    <input type="datetime-local" class="form-control" id="partida" required="required"
+                           autofocus="autofocus" th:field="*{partida}"
+                           th:classappend="${#fields.hasErrors('partida')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{partida}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" id="id" th:field="*{id}" />
+            <button type="submit" th:text="#{button.salvar.label}"
+                    class="btn btn-primary btn-sm"></button>
+        </form>
+    </div>
+</section>
+</body>
+</html>

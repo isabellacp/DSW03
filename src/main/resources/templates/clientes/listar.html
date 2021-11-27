@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+<section class="layout-content" layout:fragment="corpo">
+
+    <div class="container" id="listagem">
+
+        <div th:replace="fragments/alert"></div>
+
+        <div align="center">
+            <table class="table">
+                <caption></caption>
+                <tr>
+                    <th>#</th>
+                    <th th:text="#{client.name}"></th>
+                    <th th:text="#{client.cpf}"></th>
+                    <th th:text="#{client.birth}"></th>
+                    <th th:text="#{client.gender}"></th>
+                    <th th:text="#{client.phone}"></th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.id}"></td>
+
+                    <td th:text="${cliente.usuario.nome}"></td>
+                    <td th:text="${cliente.cpf}"></td>
+                    <td th:text="${cliente.nascimento}"></td>
+                    <td th:text="${cliente.sexo}"></td>
+                    <td th:text="${cliente.telefone}"></td>
+
+                    <td colspan="2">
+                        <a th:href="@{/clientes/editar/{id} (id=${cliente.id}) }"
+                           role="button">
+                            <span th:text="#{link.editar.label}"> </span>
+                        </a>
+                        <a
+                                th:href="@{/clientes/excluir/{id} (id=${cliente.id}) }"
+                        <span th:text="#{link.excluir.label}" ></span>
+                    </a>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div th:replace="fragments/modal :: modal"></div>
+</section>
+</body>
+</html>

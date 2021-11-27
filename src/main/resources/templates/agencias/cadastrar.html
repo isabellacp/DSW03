@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+
+<section class="layout-content" layout:fragment="corpo">
+
+
+    <div class="container" id="cadastro">
+
+        <div th:replace="fragments/alert"></div>
+
+        <form
+                th:action="${agencia.id == null} ? @{/agencias/salvar} : @{/agencias/editar}"
+                th:object="${agencia}" method="POST">
+
+            <div class="form-row">
+
+
+
+                <div class="form-group col-md-6">
+                    <label th:text="#{login.username}" for="usuario"></label>
+                    <select id="usuario" class="form-control" th:field="*{usuario}"  required="required">
+                        <option th:each="usuario : ${usuarios}" th:value="${usuario.id}"
+                                th:text="${usuario.nome}"></option>
+                    </select>
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{usuario}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{agency.cnpj}" for="cnpj"></label>
+                    <input type="text" class="form-control" id="cnpj" placeholder="CNPJ"  required="required"
+                           autofocus="autofocus" th:field="*{cnpj}"
+                           th:classappend="${#fields.hasErrors('cnpj')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{cnpj}"></span>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label th:text="#{agency.description}" for="descricao"></label>
+                    <input type="text" class="form-control" id="descricao" placeholder="Descrição"  required="required"
+                           autofocus="autofocus" th:field="*{descricao}"
+                           th:classappend="${#fields.hasErrors('descricao')} ? is-danger" />
+
+                    <div class="invalid-feedback">
+                        <span th:errors="*{descricao}"></span>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <input type="hidden" id="id" th:field="*{id}" />
+            <button type="submit" th:text="#{button.salvar.label}"
+                    class="btn btn-primary btn-sm"></button>
+        </form>
+    </div>
+</section>
+</body>
+</html>
